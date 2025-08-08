@@ -5,11 +5,15 @@ import dotenv from "dotenv";
 import cors from "cors";
 import rateLimiter from "./middleware/rateLimiter.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 if (process.env.NODE_ENV !== "production") {
   app.use(
